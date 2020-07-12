@@ -9,14 +9,28 @@ export default class ToggleButton extends React.Component {
     };
 
     //This binding is necessary to make `this` work in callback
-    //   this.handleClick = this.handleClick.bind(this);
+       this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = () => {
-      this.setState(prevState => ({
-          isToggleOn: !prevState.isToggleOn
-      }));
+      this.setState(function(prevState){
+        return {
+            isToggleOn: !prevState.isToggleOn
+        };
+      },
+      () => {
+        console.log("the updated value of toggleOn: " + this.state.isToggleOn);
+      });
+      //setState method takes two function as input
+      // 1. Action need to taken
+      // 2. Callback after action is taken
+      console.log("the stale va lue of toggleOn: " + this.state.isToggleOn);
   }
+
+    handleClick(){
+        console.log(this.state.isToggleOn);
+    }
+
 
 
   render() {
