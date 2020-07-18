@@ -12,30 +12,33 @@ export default class LongLatComponent extends React.Component {
             errorMessage: ''
         };
 
+        window.navigator.geolocation.getCurrentPosition(
+                      (position) => {console.log(position);
+                                    this.setState({lat: position.coords.latitude,
+                                                    long: position.coords.longitude})},
+                      (err) => {
+                                    console.log(err);
+                                    this.setState({errorMessage: err.message})
+                                }
+                  );
+
     }
 
     componentDidMount(){
-         window.navigator.geolocation.getCurrentPosition(
-              (position) => {console.log(position);
-                            this.setState({lat: position.coords.latitude,
-                                            long: position.coords.longitude})},
-              (err) => {
-                            console.log(err);
-                            this.setState({errorMessage: err.message})
-                        }
-          );
+    debugger;
+         console.log("inside componentDidmount");
     }
 
 
 
   render() {
 
-    /*return (
-        <div>
-           <h1> Hello there, </h1>
-           Your longitude is: {this.state.long}, and latitude is: {this.state.lat}
-        </div>
-    );*/
+//    return (
+//        <div>
+//           <h1> Hello there, </h1>
+//           Your longitude is: {this.state.long}, and latitude is: {this.state.lat}
+//        </div>
+//    );
 
 //    2.
 //    return (

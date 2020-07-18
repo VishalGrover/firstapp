@@ -1,14 +1,15 @@
 import React from "react";
+import axios from "axios";
 
 
 export default class UserDetailComponent extends React.Component {
   constructor(props){
     super(props);
     this.inputRef = React.createRef();
-    this.cbRef = (input) => {
-        this.inputRef = input;
-    };
-    this.onInputChange = this.onInputChange.bind(this);
+//    this.cbRef = (input) => {
+//        this.inputRef = input;
+//    };
+    this.onSearchSubmit = this.onSearchSubmit.bind(this);
   }
 
   componentDidMount(){
@@ -22,30 +23,29 @@ export default class UserDetailComponent extends React.Component {
   render() {
     return (
         <div>
-            please enter your name
-           1. <input type="text" ref={this.cbRef}></input>
+            Enter Text
+           1. <input type="text" ref={this.inputRef}></input>
            <br/>
-            2.  <input type="text" onChange={this.onInputChange} ></input>
+            2.  <button onClick={this.onSearchSubmit} >Search Image</button>
+            <br/>
+
         </div>
     );
   }
 
-  onInputChange(event){
+  async onSearchSubmit(event){
       console.log(event.target.value);
-      this.cbRef(event.target);
-      console.log(this.inputRef.value);
-      const value = event.target.value;
-      let url = new URL('https://api.unsplash.com/search/photos');
-      let params = {
-                       'query': event.target.value
-                   };
-      Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
-
-      const result = fetch(url,{
-          'headers': {
-              'Authorization': 'Client-ID SzkQw9mm_TTYPAX8ZEwk5e8kuZXjPQk5fPrGPzzMIzU'
-          }
+        debugger;
+      console.log(this.inputRef.current.value);
+      const value = this.inputRef.current.value;
+      const result = await axios.get("https://api.unsplash.com/search/photos", {
+            params : {query: value},
+            headers: {
+                Authorization: 'Client-ID SzkQw9mm_TTYPAX8ZEwk5e8kuZXjPQk5fPrGPzzMIzU'
+            }
       });
+
+      console.log(result);
 
     }
 }

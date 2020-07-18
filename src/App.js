@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Layout from './components/Layout';
-import HelloComponent from './components/HelloComponent';
+import UserDetailComponent from './components/UserDetailComponent';
 
 
 export default class App extends React.Component{
@@ -10,9 +10,7 @@ export default class App extends React.Component{
         const name = 'Vishal';
         return (
         <div className="App">
-            <Layout name='Vishal'>
-
-            </Layout>
+            <UserDetailComponent />
         </div>
         );
     }

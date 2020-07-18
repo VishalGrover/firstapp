@@ -1,4 +1,5 @@
 import React from "react";
+import MethodPropChild2 from './MethodPropChild2';
 
 export default class MethodPropChild extends React.Component {
 
@@ -8,9 +9,7 @@ export default class MethodPropChild extends React.Component {
 
   render() {
     return (
-        <div>
-            <button onClick={this.props.clickHandler}>Call parent method</button>
-        </div>
+        <MethodPropChild2 clickHandler={this.props.clickHandler} />
     );
   }
 }
