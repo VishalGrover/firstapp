@@ -12,21 +12,20 @@ export default class LongLatComponent extends React.Component {
             errorMessage: ''
         };
 
-        window.navigator.geolocation.getCurrentPosition(
-                      (position) => {console.log(position);
-                                    this.setState({lat: position.coords.latitude,
-                                                    long: position.coords.longitude})},
-                      (err) => {
-                                    console.log(err);
-                                    this.setState({errorMessage: err.message})
-                                }
-                  );
+
 
     }
 
     componentDidMount(){
-    debugger;
-         console.log("inside componentDidmount");
+        window.navigator.geolocation.getCurrentPosition(
+                              (position) => {console.log(position);
+                                            this.setState({lat: position.coords.latitude,
+                                                            long: position.coords.longitude})},
+                              (err) => {
+                                            console.log(err);
+                                            this.setState({errorMessage: err.message})
+                                        }
+                          );
     }
 
 

@@ -36,6 +36,7 @@ export default class UserDetailComponent extends React.Component {
   async onSearchSubmit(event){
       console.log(event.target.value);
         debugger;
+
       console.log(this.inputRef.current.value);
       const value = this.inputRef.current.value;
       const result = await axios.get("https://api.unsplash.com/search/photos", {
